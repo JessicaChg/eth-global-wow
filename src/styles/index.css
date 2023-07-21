@@ -1,0 +1,30 @@
+*:focus {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+*:active {
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overscroll-behavior-y: none;
+}
+
+body {
+  overflow: hidden;
+  touch-action: none;
+}
+
+:root {
+  --full-vh: 100vh;
+}
