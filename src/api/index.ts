@@ -1,7 +1,6 @@
 import axios, { type AxiosInstance } from 'axios'
 import { FeedItem, GetFeedsResponse } from './Feed.interface.ts'
 import { IS_MOCK_API } from '../constants/env.ts'
-import mock from './mock.ts'
 
 export class API {
   private readonly axios: AxiosInstance
@@ -10,10 +9,9 @@ export class API {
     const baseURL = options?.baseURL || '/'
     this.axios = axios.create({ baseURL })
     if (IS_MOCK_API) {
-      mock(this.axios)
-      // import('./mock.ts').then((mock) => {
-      //   mock.default(this.axios)
-      // })
+      import('./mock.ts').then((mock) => {
+        mock.default(this.axios)
+      })
     }
   }
 
@@ -25,14 +23,25 @@ export class API {
     })
   }
 
-  getFeedList(options?: { page?: number; size?: number }) {
+  async getFeedList(options?: { page?: number; size?: number }) {
     const page = options?.page || 1
     const size = options?.size || 20
-    return this.axios.get<GetFeedsResponse>('/api/feeds', {
-      params: {
-        page,
-        size,
-      },
-    })
+    const { data: feedItems } = await this.axios.get<FeedItem[]>(
+      '/api/feed.json',
+      {
+        params: {
+          page,
+          size,
+        },
+      }
+    )
+    return {
+      data: {
+        data: feedItems,
+        total: feedItems.length,
+        page: 0,
+        nextPage: null,
+      } as GetFeedsResponse,
+    }
   }
 }

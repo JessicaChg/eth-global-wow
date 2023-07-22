@@ -1,9 +1,9 @@
 type Fn = (...args: any[]) => void
 export function debounce<F = Fn>(fn: F, ms: number) {
-  let timer: number | null
+  let timer: unknown | null
   return (...args: any[]) => {
     if (timer) {
-      clearTimeout(timer)
+      clearTimeout(timer as number)
     }
     timer = setTimeout(() => {
       ;(fn as any)(...args)

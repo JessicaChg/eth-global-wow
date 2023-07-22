@@ -10,7 +10,7 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react'
-import * as dayjs from 'dayjs'
+import dayjs from 'dayjs'
 import {
   FeedItem,
   FeedItemType,
