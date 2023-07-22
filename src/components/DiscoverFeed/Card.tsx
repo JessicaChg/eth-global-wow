@@ -21,6 +21,7 @@ import { ReactComponent as Heart2SVG } from '../../assets/svg/heart-2.svg'
 import { ReactComponent as TwitterSVG } from '../../assets/svg/twitter.svg'
 import { ReactComponent as DiscordSVG } from '../../assets/svg/discord.svg'
 import { ReactComponent as GithubSVG } from '../../assets/svg/github.svg'
+import { ReactComponent as TelegramSVG } from '../../assets/svg/telegram.svg'
 import { ReactComponent as EnsSVG } from '../../assets/svg/ens.svg'
 import { ReactComponent as MirrorSVG } from '../../assets/svg/mirror.svg'
 import { AddressBar } from './AddressBar.tsx'
@@ -28,6 +29,7 @@ import { AddressBar } from './AddressBar.tsx'
 const socialIconMap: Record<string, any> = {
   twitter: TwitterSVG,
   discord: DiscordSVG,
+  telegram: TelegramSVG,
   github: GithubSVG,
   ens: EnsSVG,
   mirror: MirrorSVG,
