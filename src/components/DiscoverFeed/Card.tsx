@@ -25,6 +25,7 @@ import { ReactComponent as GithubSVG } from '../../assets/svg/github.svg'
 import { ReactComponent as TelegramSVG } from '../../assets/svg/telegram.svg'
 import { ReactComponent as EnsSVG } from '../../assets/svg/ens.svg'
 import { ReactComponent as MirrorSVG } from '../../assets/svg/mirror.svg'
+import { ReactComponent as LabelSVG } from '../../assets/svg/label.svg'
 import { AddressBar } from './AddressBar.tsx'
 
 const socialIconMap: Record<string, any> = {
@@ -43,74 +44,136 @@ interface CardProps extends FlexProps {
 export const Card: FC<CardProps> = ({ data, ...props }) => {
   const avatar = (data as FeedUserItem).avatar || (data as FeedProjectItem).logo
   return (
-    <Flex w="full" h="auto" direction="column" pb="84px" {...props}>
-      <Flex
-        w="full"
-        h="120px"
-        rounded="16px"
-        overflow="hidden"
-        pos="relative"
-        zIndex={0}
-      >
-        <Image
-          src={avatar}
+    <Flex
+      w="full"
+      h="auto"
+      direction="column"
+      pb="84px"
+      userSelect="none"
+      {...props}
+    >
+      {data.type === FeedItemType.Project ? (
+        <Flex
           w="full"
-          h="full"
-          bg="rgba(0, 0, 0, 0.5)"
-          objectFit="cover"
-          filter="blur(50px) brightness(1.5)"
+          bg="linear-gradient(88deg, rgba(238, 96, 156, 0.40) 0%, rgba(81, 87, 255, 0.40) 100%)"
+          pt="32px"
+          pb="22px"
           rounded="16px"
-          transform="translateZ(0) scale(1.5)"
-        />
-      </Flex>
-      <Image
-        src={avatar}
-        w="102px"
-        h="102px"
-        rounded="100%"
-        border="2px solid #fff"
-        objectFit="cover"
-        mx="auto"
-        mt="-72px"
-        pos="relative"
-        bg="gray.800"
-        zIndex={1}
-        transform="translateZ(0)"
-      />
-      {(data as FeedProjectItem).title ? (
-        <Heading
-          fontSize="20px"
-          fontWeight={700}
-          lineHeight="130%"
-          mt="6"
-          w="full"
-          textAlign="center"
         >
-          {(data as FeedProjectItem).title}
-        </Heading>
-      ) : null}
-      <AddressBar
-        mt={data.type === FeedItemType.User ? 5 : 2}
-        address={data.address}
-      />
-      <Flex wrap="wrap" w="full" mt="16px">
-        {data.tags.map((tag) => (
-          <Tag
-            key={tag}
-            mr={2}
-            mb={2}
-            px="14px"
-            py={2}
-            fontSize="12px"
-            fontWeight={500}
-            textTransform="capitalize"
-            rounded="full"
-            bg="rgba(255, 255, 255, 0.05)"
+          <VStack w="full" spacing="16px" alignItems="center">
+            <Image
+              src={avatar}
+              w="72px"
+              h="72px"
+              rounded="100%"
+              border="4px solid #fff"
+              objectFit="cover"
+              mx="auto"
+              pos="relative"
+              bg="gray.800"
+              zIndex={1}
+              transform="translateZ(0)"
+            />
+            {(data as FeedProjectItem).title ? (
+              <Heading
+                fontSize="20px"
+                fontWeight={700}
+                lineHeight="130%"
+                w="full"
+                textAlign="center"
+              >
+                {(data as FeedProjectItem).title}
+              </Heading>
+            ) : null}
+            <AddressBar address={data.address} />
+            <Box color="#F9D54A" fontSize="14px" fontWeight={400}>
+              <Box as="span" fontWeight={700}>
+                125.697
+              </Box>{' '}
+              / $154,232.06
+            </Box>
+          </VStack>
+        </Flex>
+      ) : (
+        <>
+          <Flex
+            w="full"
+            h="120px"
+            rounded="16px"
+            overflow="hidden"
+            pos="relative"
+            zIndex={0}
           >
-            {tag}
-          </Tag>
-        ))}
+            <Image
+              src={avatar}
+              w="full"
+              h="full"
+              bg="rgba(0, 0, 0, 0.5)"
+              objectFit="cover"
+              filter="blur(50px) brightness(1.5)"
+              rounded="16px"
+              transform="translateZ(0) scale(1.5)"
+            />
+          </Flex>
+          <Image
+            src={avatar}
+            w="102px"
+            h="102px"
+            rounded="100%"
+            border="2px solid #fff"
+            objectFit="cover"
+            mx="auto"
+            mt="-72px"
+            pos="relative"
+            bg="gray.800"
+            zIndex={1}
+            transform="translateZ(0)"
+          />
+          <AddressBar mt={5} address={data.address} />
+        </>
+      )}
+
+      <Flex
+        mt={4}
+        w="full"
+        direction="column"
+        my={8}
+        p={5}
+        rounded="14px"
+        bg="#222222"
+      >
+        <Flex
+          justify="space-between"
+          fontSize="16px"
+          fontWeight={500}
+          pb="14px"
+          borderBottom="1px solid rgba(255, 255, 255, 0.05)"
+        >
+          <Flex h="20px" lineHeight="20px">
+            <Icon as={LabelSVG} w="20px" h="20px" mr="8px" />
+            Label
+          </Flex>
+        </Flex>
+        <Flex wrap="wrap" w="full" mt="16px">
+          {data.tags.map((tag) => (
+            <Tag
+              key={tag}
+              mr={2}
+              mb={2}
+              px="14px"
+              py={2}
+              fontSize="12px"
+              fontWeight={500}
+              textTransform="capitalize"
+              rounded="full"
+              bg="rgba(255, 255, 255, 0.1)"
+            >
+              {tag}
+            </Tag>
+          ))}
+        </Flex>
       </Flex>
+
       {(data as FeedProjectItem).content ? (
         <Text
           fontWeight={300}

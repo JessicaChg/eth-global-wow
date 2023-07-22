@@ -3,7 +3,7 @@ import { Box, BoxProps } from '@chakra-ui/react'
 import { useInfiniteQuery } from 'react-query'
 import { EffectCards } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import * as classNames from 'classnames'
+import classNames from 'classnames'
 import { DiscoverSideMenus } from '../DiscoverSideMenus'
 import { Card } from './Card.tsx'
 import { QueryKey } from '../../constants/QueryKey'
@@ -24,6 +24,9 @@ const PackedSwiper: FC<{
   return (
     <Swiper
       effect="cards"
+      className={classNames('swiper', {
+        moving: isMoving,
+      })}
       grabCursor
       modules={[EffectCards]}
       speed={500}
@@ -37,12 +40,7 @@ const PackedSwiper: FC<{
       {feedItems?.pages?.map((page) => (
         <Fragment key={page.page}>
           {page.data.map((item) => (
-            <SwiperSlide
-              key={item.id}
-              className={classNames('swiper-slide', {
-                moving: isMoving,
-              })}
-            >
+            <SwiperSlide key={item.id}>
               <Card data={item} />
             </SwiperSlide>
           ))}
@@ -93,7 +91,7 @@ export const DiscoverFeed: FC<BoxProps> = ({ ...props }) => {
           rounded: '32px',
           overflowY: 'auto',
         },
-        '.swiper-slide.moving': {
+        '.swiper.moving .swiper-slide': {
           overflowY: 'hidden',
         },
       }}
