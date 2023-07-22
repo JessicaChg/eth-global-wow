@@ -1,6 +1,7 @@
 import axios, { type AxiosInstance } from 'axios'
 import { FeedItem, GetFeedsResponse } from './Feed.interface.ts'
 import { IS_MOCK_API } from '../constants/env.ts'
+import mock from './mock.ts'
 
 export class API {
   private readonly axios: AxiosInstance
@@ -9,9 +10,10 @@ export class API {
     const baseURL = options?.baseURL || '/'
     this.axios = axios.create({ baseURL })
     if (IS_MOCK_API) {
-      import('./mock.ts').then((mock) => {
-        mock.default(this.axios)
-      })
+      mock(this.axios)
+      // import('./mock.ts').then((mock) => {
+      //   mock.default(this.axios)
+      // })
     }
   }
 

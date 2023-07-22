@@ -30,7 +30,8 @@ export const DiscoverFeed: FC<BoxProps> = ({ ...props }) => {
 
   const feedItemTotal = useMemo(
     () =>
-      feedItems?.pages.reduce((acc, cur) => acc + cur.data.length, 0) ||
+      // eslint-disable-next-line no-unsafe-optional-chaining
+      feedItems?.pages.reduce((acc, cur) => acc + cur?.data?.length || 0, 0) ||
       pageSize,
     [feedItems?.pages]
   )

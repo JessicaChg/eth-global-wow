@@ -143,7 +143,14 @@ export const Card: FC<CardProps> = ({ data }) => {
             {(data as FeedUserItem).socialLinks
               .filter((e) => e.url && socialIconMap[e.type])
               .map((socialLink) => (
-                <Box as="a" href={socialLink.url} w="6" h="6" minW="6">
+                <Box
+                  key={socialLink.type + socialLink.url}
+                  as="a"
+                  href={socialLink.url}
+                  w="6"
+                  h="6"
+                  minW="6"
+                >
                   <Icon as={socialIconMap[socialLink.type]} w="6" h="6" />
                 </Box>
               ))}
