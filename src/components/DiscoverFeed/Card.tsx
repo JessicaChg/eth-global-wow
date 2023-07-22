@@ -2,18 +2,19 @@ import type { FC } from 'react'
 import {
   Box,
   Flex,
-  Image,
   Heading,
+  HStack,
   Icon,
+  Image,
   Tag,
   Text,
   VStack,
-  HStack,
 } from '@chakra-ui/react'
 import * as dayjs from 'dayjs'
 import { truncateMiddle } from '../../utils/string'
 import {
   FeedItem,
+  FeedItemType,
   FeedProjectItem,
   FeedUserItem,
 } from '../../api/Feed.interface'
@@ -56,9 +57,9 @@ export const Card: FC<CardProps> = ({ data }) => {
           h="full"
           bg="rgba(0, 0, 0, 0.5)"
           objectFit="cover"
-          filter="blur(20px)"
+          filter="blur(50px) brightness(1.5)"
           rounded="16px"
-          transform="translate3d(0, 0, 0)"
+          transform="translateZ(0) scale(1.5)"
         />
       </Flex>
       <Image
@@ -97,7 +98,7 @@ export const Card: FC<CardProps> = ({ data }) => {
         mx="auto"
         py={2}
         px={4}
-        mt={2}
+        mt={data.type === FeedItemType.User ? 5 : 2}
         rounded="full"
       >
         {truncateMiddle(data.address)}

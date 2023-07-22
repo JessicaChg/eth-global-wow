@@ -15,6 +15,7 @@ export const DiscoverFeed: FC = () => {
     data: feedItems,
     fetchNextPage,
     isFetchingNextPage,
+    hasNextPage,
   } = useInfiniteQuery({
     queryKey: [QueryKey.GetFeeds],
     queryFn({ pageParam = 1 }) {
@@ -46,7 +47,11 @@ export const DiscoverFeed: FC = () => {
           ) < 10
       )
     index = Math.max(index, 0)
-    if (!isFetchingNextPage && index >= feedItemTotal - pageSize / 2) {
+    if (
+      !isFetchingNextPage &&
+      hasNextPage &&
+      index >= feedItemTotal - pageSize / 2
+    ) {
       fetchNextPage()
     }
   }, 100)
