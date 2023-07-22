@@ -1,5 +1,5 @@
 import { FC, Fragment, UIEventHandler, useMemo } from 'react'
-import { Box, Flex } from '@chakra-ui/react'
+import { Box, BoxProps, Flex } from '@chakra-ui/react'
 import { useInfiniteQuery } from 'react-query'
 import { DiscoverSideMenus } from '../DiscoverSideMenus'
 import { Card } from './Card.tsx'
@@ -9,7 +9,7 @@ import { useAPI } from '../../hooks/useAPI.ts'
 
 const pageSize = 20
 
-export const DiscoverFeed: FC = () => {
+export const DiscoverFeed: FC<BoxProps> = ({ ...props }) => {
   const api = useAPI()
   const {
     data: feedItems,
@@ -60,7 +60,9 @@ export const DiscoverFeed: FC = () => {
     <Box
       w="full"
       h="full"
+      flex={1}
       pos="relative"
+      {...props}
       sx={{
         '.slide': {
           w: 'min(100vw, 500px)',
