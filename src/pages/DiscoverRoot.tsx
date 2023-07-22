@@ -7,6 +7,13 @@ import { ReactComponent as LogoSVG } from '../assets/svg/logo.svg'
 import { ConnectButton } from '../components/ConnectButton'
 import { Path } from '../router/path.ts'
 
+import DeFiPng from '../assets/png/DeFi.png'
+import GamePng from '../assets/png/GAME.png'
+import L2Png from '../assets/png/L2.png'
+import MemePng from '../assets/png/MEME.png'
+import ZKPng from '../assets/png/ZK.png'
+import NFTPng from '../assets/png/NFT.png'
+
 import { ReactComponent as StarSVG } from '../assets/svg/star-root.svg'
 
 const breathingAnimation = keyframes`
@@ -16,20 +23,18 @@ const breathingAnimation = keyframes`
   }
   50% {
     transform: scale(1.1);
-    opacity: 0.8;
+    opacity: 0.6;
   }
 `
 
-export const Star: FC<BoxProps & { name: string; index?: number }> = ({
-  index = 0,
-  name,
-  ...props
-}) => (
+export const Star: FC<
+  BoxProps & { name: string; index?: number; img?: string }
+> = ({ index = 0, name, img, ...props }) => (
   <Box
     as={Link}
     to={`${Path.Discover}/${name}`}
-    w="45px"
-    h="45px"
+    w="65px"
+    h="65px"
     pos="absolute"
     top="10%"
     left="10%"
@@ -50,7 +55,13 @@ export const Star: FC<BoxProps & { name: string; index?: number }> = ({
     >
       {name}
     </Box>
-    <Icon as={StarSVG} w="45px" h="45px" />
+    {img ? (
+      <Box border="1px solid rgba(255, 255, 255, 0.5)" p="6px" rounded="full">
+        <Image src={img} w="full" h="full" objectFit="cover" rounded="full" />
+      </Box>
+    ) : (
+      <Icon as={StarSVG} w="full" h="full" />
+    )}
   </Box>
 )
 
@@ -60,31 +71,37 @@ const DiscoverRoot: FC = () => {
       name: 'L2',
       top: '32%',
       left: '10%',
+      img: L2Png,
     },
     {
       name: 'ZK',
       top: '24%',
       left: '37%',
+      img: ZKPng,
     },
     {
       name: 'DeFi',
       top: '15%',
       left: '70%',
+      img: DeFiPng,
     },
     {
       name: 'Meme',
       top: '44%',
       left: '78%',
+      img: MemePng,
     },
     {
       name: 'Game',
       top: '50%',
       left: '55%',
+      img: GamePng,
     },
     {
       name: 'NFT',
       top: '60%',
       left: '20%',
+      img: NFTPng,
     },
   ]
 

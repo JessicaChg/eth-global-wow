@@ -26,6 +26,9 @@ import { ReactComponent as TelegramSVG } from '../../assets/svg/telegram.svg'
 import { ReactComponent as EnsSVG } from '../../assets/svg/ens.svg'
 import { ReactComponent as MirrorSVG } from '../../assets/svg/mirror.svg'
 import { ReactComponent as LabelSVG } from '../../assets/svg/label.svg'
+import { ReactComponent as WebsiteSVG } from '../../assets/svg/website.svg'
+import { ReactComponent as WarpcaseSVG } from '../../assets/svg/warpcase.svg'
+import PhaverPng from '../../assets/png/phaver.png'
 import { AddressBar } from './AddressBar.tsx'
 
 const socialIconMap: Record<string, any> = {
@@ -35,7 +38,23 @@ const socialIconMap: Record<string, any> = {
   github: GithubSVG,
   ens: EnsSVG,
   mirror: MirrorSVG,
+  website: WebsiteSVG,
+  warpcase: WarpcaseSVG,
 }
+
+const SocialItem: FC<{ type?: string; img?: string; url?: string }> = ({
+  type,
+  img,
+  url,
+}) => (
+  <Box as="a" href={url} target="_blank" w="6" h="6" minW="6">
+    {img ? (
+      <Image src={img} w="6" h="6" rounded="full" />
+    ) : (
+      <Icon as={socialIconMap[type!]} w="6" h="6" />
+    )}
+  </Box>
+)
 
 interface CardProps extends FlexProps {
   data: FeedItem
@@ -85,12 +104,12 @@ export const Card: FC<CardProps> = ({ data, ...props }) => {
                 {(data as FeedProjectItem).title}
               </Heading>
             ) : null}
-            {data.address ? <AddressBar address={data.address} /> : null}
-            {(data as FeedProjectItem).tokenPrice ? (
-              <Box color="#F9D54A" fontSize="14px" fontWeight={500}>
-                {(data as FeedProjectItem).tokenPrice}
-              </Box>
-            ) : null}
+            {/* {data.address ? <AddressBar address={data.address} /> : null} */}
+            {/* {(data as FeedProjectItem).tokenPrice ? ( */}
+            {/*  <Box color="#F9D54A" fontSize="14px" fontWeight={500}> */}
+            {/*    {(data as FeedProjectItem).tokenPrice} */}
+            {/*  </Box> */}
+            {/* ) : null} */}
           </VStack>
         </Flex>
       ) : (
@@ -101,19 +120,9 @@ export const Card: FC<CardProps> = ({ data, ...props }) => {
             rounded="16px"
             overflow="hidden"
             pos="relative"
+            bg="#bebebe"
             zIndex={0}
-          >
-            <Image
-              src={avatar}
-              w="full"
-              h="full"
-              bg="rgba(0, 0, 0, 0.5)"
-              objectFit="cover"
-              filter="blur(50px) brightness(1.5)"
-              rounded="16px"
-              transform="translateZ(0) scale(1.5)"
-            />
-          </Flex>
+          />
           <Image
             src={avatar}
             w="102px"
@@ -173,6 +182,50 @@ export const Card: FC<CardProps> = ({ data, ...props }) => {
         </Flex>
       </Flex>
 
+      <Flex mt={2} w="full" direction="column">
+        <Heading
+          fontSize="14px"
+          fontWeight={700}
+          pos="relative"
+          mr="auto"
+          mb="4"
+        >
+          Social Media
+        </Heading>
+        <Flex
+          justify="space-between"
+          align="center"
+          py={2}
+          px={4}
+          h={10}
+          rounded="full"
+          bg="#222"
+        >
+          {data.type === FeedItemType.Project ? (
+            <>
+              <SocialItem type="website" />
+              <SocialItem type="twitter" />
+              <SocialItem type="discord" />
+              <SocialItem type="telegram" />
+              <SocialItem type="github" />
+            </>
+          ) : (
+            <>
+              <SocialItem type="warpcase" />
+              <SocialItem img="https://pbs.twimg.com/profile_images/1556882055379636224/4g4orntN_400x400.jpg" />
+              <SocialItem img="https://pbs.twimg.com/profile_images/1520334893246390274/47gVjFCe_400x400.jpg" />
+              <SocialItem img={PhaverPng} />
+            </>
+          )}
+
+          {/* {(data as FeedUserItem).socialLinks */}
+          {/*  .filter((e) => e.url && socialIconMap[e.type]) */}
+          {/*  .map((socialLink) => ( */}
+          {/*    <SocialItem /> */}
+          {/*  ))} */}
+        </Flex>
+      </Flex>
+
       {(data as FeedProjectItem).content ? (
         <Text
           fontWeight={300}
@@ -183,45 +236,6 @@ export const Card: FC<CardProps> = ({ data, ...props }) => {
         >
           {(data as FeedProjectItem).content || 'No Description'}
         </Text>
-      ) : null}
-
-      {(data as FeedUserItem).socialLinks?.length > 0 ? (
-        <Flex mt={6} w="full" direction="column">
-          <Heading
-            fontSize="14px"
-            fontWeight={700}
-            pos="relative"
-            mr="auto"
-            mb="4"
-          >
-            Social Media
-          </Heading>
-          <Flex
-            justify="space-between"
-            align="center"
-            py={2}
-            px={4}
-            h={10}
-            rounded="full"
-            bg="#222"
-          >
-            {(data as FeedUserItem).socialLinks
-              .filter((e) => e.url && socialIconMap[e.type])
-              .map((socialLink) => (
-                <Box
-                  key={socialLink.type + socialLink.url}
-                  as="a"
-                  href={socialLink.url}
-                  target="_blank"
-                  w="6"
-                  h="6"
-                  minW="6"
-                >
-                  <Icon as={socialIconMap[socialLink.type]} w="6" h="6" />
-                </Box>
-              ))}
-          </Flex>
-        </Flex>
       ) : null}
 
       {(data as FeedUserItem).erc20?.length > 0 ? (
@@ -377,7 +391,9 @@ export const Card: FC<CardProps> = ({ data, ...props }) => {
               rounded: 'full',
             }}
           >
-            Relevant content
+            {data.type === FeedItemType.Project
+              ? 'Community Discussion'
+              : 'Feed'}
           </Heading>
           <VStack mt="16px" spacing="10" w="full">
             {(data as FeedProjectItem).relevantContent.map((item) => (
@@ -386,22 +402,32 @@ export const Card: FC<CardProps> = ({ data, ...props }) => {
                 w="full"
                 key={`${item.createTime}-${item.name}`}
               >
-                <Flex w="full" mb="14px">
-                  <Image
-                    src={item.avatar}
-                    w="36px"
-                    h="36px"
-                    objectFit="cover"
-                    mr="10px"
-                  />
-                  <Flex direction="column" h="36px">
-                    <Box fontSize="14px">{item.name}</Box>
-                    <Box color="#8C91A2" fontSize="12px">
-                      {item.twitterName} -{' '}
-                      {dayjs(item.createTime).format('MMM DD')}
-                    </Box>
+                {item.name && item.twitterName ? (
+                  <Flex w="full" mb="14px">
+                    {data.type === FeedItemType.Project ? (
+                      <Image
+                        src={item.avatar}
+                        w="36px"
+                        h="36px"
+                        objectFit="cover"
+                        mr="10px"
+                      />
+                    ) : null}
+                    {item.name && item.twitterName ? (
+                      <Flex direction="column" h="36px">
+                        {item.name ? (
+                          <Box fontSize="14px">{item.name}</Box>
+                        ) : null}
+                        {item.twitterName ? (
+                          <Box color="#8C91A2" fontSize="12px">
+                            {item.twitterName} -{' '}
+                            {dayjs(item.createTime).format('MMM DD')}
+                          </Box>
+                        ) : null}
+                      </Flex>
+                    ) : null}
                   </Flex>
-                </Flex>
+                ) : null}
                 <Text fontSize="12px" fontWeight={400}>
                   {item.content}
                 </Text>

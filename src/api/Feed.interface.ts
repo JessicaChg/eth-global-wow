@@ -5,11 +5,11 @@ export enum FeedItemType {
 }
 
 export interface RelevantContentItem {
-  name: string
-  twitterName: string
-  isVerified: true
-  avatar: string
-  createTime: string
+  name?: string
+  twitterName?: string
+  isVerified?: true
+  avatar?: string
+  createTime?: string
   content: string
 }
 
