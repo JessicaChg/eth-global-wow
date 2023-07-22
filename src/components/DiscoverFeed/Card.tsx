@@ -85,13 +85,12 @@ export const Card: FC<CardProps> = ({ data, ...props }) => {
                 {(data as FeedProjectItem).title}
               </Heading>
             ) : null}
-            <AddressBar address={data.address} />
-            <Box color="#F9D54A" fontSize="14px" fontWeight={400}>
-              <Box as="span" fontWeight={700}>
-                125.697
-              </Box>{' '}
-              / $154,232.06
-            </Box>
+            {data.address ? <AddressBar address={data.address} /> : null}
+            {(data as FeedProjectItem).tokenPrice ? (
+              <Box color="#F9D54A" fontSize="14px" fontWeight={500}>
+                {(data as FeedProjectItem).tokenPrice}
+              </Box>
+            ) : null}
           </VStack>
         </Flex>
       ) : (
@@ -129,7 +128,7 @@ export const Card: FC<CardProps> = ({ data, ...props }) => {
             zIndex={1}
             transform="translateZ(0)"
           />
-          <AddressBar mt={5} address={data.address} />
+          {data.address ? <AddressBar mt={5} address={data.address} /> : null}
         </>
       )}
 

@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Box, BoxProps, Flex, Icon, Image } from '@chakra-ui/react'
+import { Box, BoxProps, Flex, Icon, Image, keyframes } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import BackgroundImage from '../assets/png/background.jpeg'
 import { ReactComponent as GalaxySVG } from '../assets/svg/galaxy.svg'
@@ -9,7 +9,22 @@ import { Path } from '../router/path.ts'
 
 import { ReactComponent as StarSVG } from '../assets/svg/star-root.svg'
 
-export const Star: FC<BoxProps & { name: string }> = ({ name, ...props }) => (
+const breathingAnimation = keyframes`
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+`
+
+export const Star: FC<BoxProps & { name: string; index?: number }> = ({
+  index = 0,
+  name,
+  ...props
+}) => (
   <Box
     as={Link}
     to={`${Path.Discover}/${name}`}
@@ -19,6 +34,10 @@ export const Star: FC<BoxProps & { name: string }> = ({ name, ...props }) => (
     top="10%"
     left="10%"
     zIndex={4}
+    animation={`${breathingAnimation} 5s ease-in-out infinite`}
+    style={{
+      animationDelay: `${index * 0.3}s`,
+    }}
     {...props}
   >
     <Box
@@ -54,8 +73,8 @@ const DiscoverRoot: FC = () => {
     },
     {
       name: 'Meme',
-      top: '40%',
-      left: '73%',
+      top: '44%',
+      left: '78%',
     },
     {
       name: 'Game',
@@ -104,8 +123,8 @@ const DiscoverRoot: FC = () => {
         top="15%"
         left="0"
       />
-      {stars.map((star) => (
-        <Star key={star.name} {...star} />
+      {stars.map((star, index) => (
+        <Star key={star.name} index={index} {...star} />
       ))}
     </Flex>
   )

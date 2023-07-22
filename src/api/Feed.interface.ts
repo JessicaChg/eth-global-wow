@@ -36,7 +36,7 @@ export interface SocialLink {
 
 export interface FeedBaseItem {
   id: string
-  address: Address
+  address?: Address
   tags: string[]
   type: FeedItemType
 }
