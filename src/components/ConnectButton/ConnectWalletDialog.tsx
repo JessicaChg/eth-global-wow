@@ -8,12 +8,19 @@ import {
   Spinner,
   VStack,
   Image,
+  Flex,
 } from '@chakra-ui/react'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
-import type { InjectedConnector } from 'wagmi/connectors/injected'
 import { useConnect } from 'wagmi'
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import MetamaskPNG from '../../assets/png/metamask.png'
+import WalletConnectPNG from '../../assets/png/walletConnect.png'
 
+const walletConnectConnector = new WalletConnectConnector({
+  options: {
+    projectId: '7bdc76b009f7ebf530a2ecd06711ed73',
+  },
+})
 const metamaskConnector = new MetaMaskConnector()
 
 export interface ConnectWalletDialogProps {
@@ -24,10 +31,11 @@ export interface ConnectWalletDialogProps {
 interface ItemProps {
   name: string
   icon: string
-  connector: InjectedConnector
+  connector: any
+  onClose: () => void
 }
 
-const Item: FC<ItemProps> = ({ name, icon, connector }) => {
+const Item: FC<ItemProps> = ({ name, icon, connector, onClose }) => {
   const connect = useConnect({
     connector,
   })
@@ -50,6 +58,7 @@ const Item: FC<ItemProps> = ({ name, icon, connector }) => {
         bg: 'rgba(255, 255, 255, 0.15)',
       }}
       onClick={() => {
+        onClose()
         connect.connect()
       }}
     >
@@ -75,22 +84,45 @@ export const ConnectWalletDialog: FC<ConnectWalletDialogProps> = ({
 }) => (
   <Drawer isOpen={isOpen} onClose={onClose} placement="bottom">
     <DrawerOverlay />
-    <DrawerContent px="30px" py="24px" roundedTop="20px" h="315px">
-      <DrawerHeader
-        textAlign="center"
-        fontSize="18px"
-        fontWeight={700}
-        color="#F9D54A"
+    <DrawerContent
+      bg="rgba(0, 0, 0, 0)"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <Flex
+        direction="column"
+        bg="#3A3A3A"
+        px="30px"
+        py="24px"
+        roundedTop="20px"
+        h="315px"
+        w="full"
+        maxW="500px"
       >
-        Connect account
-      </DrawerHeader>
-      <VStack spacing="8px">
-        <Item
-          name="Metamask"
-          connector={metamaskConnector}
-          icon={MetamaskPNG}
-        />
-      </VStack>
+        <DrawerHeader
+          textAlign="center"
+          fontSize="18px"
+          fontWeight={700}
+          color="#F9D54A"
+        >
+          Connect account
+        </DrawerHeader>
+        <VStack spacing="8px">
+          <Item
+            name="Metamask"
+            connector={metamaskConnector}
+            icon={MetamaskPNG}
+            onClose={onClose}
+          />
+          <Item
+            name="WalletConnect"
+            connector={walletConnectConnector}
+            icon={WalletConnectPNG}
+            onClose={onClose}
+          />
+        </VStack>
+      </Flex>
     </DrawerContent>
   </Drawer>
 )

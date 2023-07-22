@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { useAccount } from 'wagmi'
+import { useAccount, useDisconnect } from 'wagmi'
 import {
   Box,
   Button,
@@ -8,14 +8,18 @@ import {
   MenuItem,
   MenuList,
   useDisclosure,
+  Image,
+  Flex,
 } from '@chakra-ui/react'
 
 import { ConnectWalletDialog } from './ConnectWalletDialog.tsx'
 import { truncateMiddle } from '../../utils/string.ts'
 
 export const ConnectButton: FC = () => {
-  const { address, isConnected, connector } = useAccount()
+  const { address, isConnected } = useAccount()
+
   const connectWalletDialog = useDisclosure()
+  const { disconnect } = useDisconnect()
 
   if (isConnected)
     return (
@@ -27,21 +31,28 @@ export const ConnectButton: FC = () => {
             bg="linear-gradient(90deg, #EE609C 0%, #5157FF 100%)"
             rounded="full"
           >
-            <Box py={2} px={6} bg="#000" w="full" h="full" rounded="full">
-              <Box
+            <Box p="4px" pr="24px" bg="#000" w="full" h="full" rounded="full">
+              <Flex
                 as="span"
                 bg="linear-gradient(90deg, #EE609C 0%, #5157FF 100%)"
                 bgClip="text"
+                lineHeight="32px"
               >
+                <Image
+                  src="https://app.relationlabs.ai/icon/avatar/avatar20.png"
+                  w="30px"
+                  h="30px"
+                  rounded="full"
+                  mr="10px"
+                  border="1px solid #fff"
+                />
                 {truncateMiddle(address)}
-              </Box>
+              </Flex>
             </Box>
           </Box>
         </MenuButton>
         <MenuList>
-          <MenuItem onClick={() => connector?.disconnect()}>
-            Disconnect
-          </MenuItem>
+          <MenuItem onClick={() => disconnect()}>Disconnect</MenuItem>
         </MenuList>
       </Menu>
     )

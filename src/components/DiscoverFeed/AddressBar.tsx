@@ -1,5 +1,12 @@
 import { FC } from 'react'
-import { Box, BoxProps, Icon, Tooltip, useClipboard } from '@chakra-ui/react'
+import {
+  Box,
+  BoxProps,
+  Flex,
+  Icon,
+  Tooltip,
+  useClipboard,
+} from '@chakra-ui/react'
 import { truncateMiddle } from '../../utils/string.ts'
 import { ReactComponent as CopySVG } from '../../assets/svg/copy-with-theme-color.svg'
 
@@ -48,7 +55,7 @@ export const AddressBar: FC<AddressBarProps> = ({ address, ...props }) => {
         onClick={onCopy}
         {...props}
       >
-        <Box
+        <Flex
           pos="absolute"
           top="1px"
           left="1px"
@@ -67,7 +74,7 @@ export const AddressBar: FC<AddressBarProps> = ({ address, ...props }) => {
             {truncateMiddle(address)}
           </Box>
           <Icon as={CopySVG} ml="5px" transform="translateY(2px)" />
-        </Box>
+        </Flex>
       </Box>
     </Tooltip>
   )
