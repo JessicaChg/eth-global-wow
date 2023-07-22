@@ -22,7 +22,7 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: '#161616',
+        bg: '#2B2B2B',
         fontFamily: "'Space Grotesk Variable', sans-serif;",
       },
     },

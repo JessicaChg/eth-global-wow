@@ -39,32 +39,32 @@ const DiscoverRoot: FC = () => {
   const stars = [
     {
       name: 'L2',
-      top: '42%',
+      top: '32%',
       left: '10%',
     },
     {
       name: 'ZK',
-      top: '34%',
+      top: '24%',
       left: '37%',
     },
     {
       name: 'DeFi',
-      top: '25%',
+      top: '15%',
       left: '70%',
     },
     {
       name: 'Meme',
-      top: '50%',
+      top: '40%',
       left: '73%',
     },
     {
       name: 'Game',
-      top: '57%',
+      top: '50%',
       left: '55%',
     },
     {
       name: 'NFT',
-      top: '65%',
+      top: '60%',
       left: '20%',
     },
   ]
@@ -105,7 +105,7 @@ const DiscoverRoot: FC = () => {
         left="0"
       />
       {stars.map((star) => (
-        <Star {...star} />
+        <Star key={star.name} {...star} />
       ))}
     </Flex>
   )

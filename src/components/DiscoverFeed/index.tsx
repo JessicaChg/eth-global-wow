@@ -1,21 +1,64 @@
-import { FC, Fragment, UIEventHandler, useMemo } from 'react'
-import { Box, BoxProps, Flex } from '@chakra-ui/react'
+import { FC, Fragment, useState } from 'react'
+import { Box, BoxProps } from '@chakra-ui/react'
 import { useInfiniteQuery } from 'react-query'
+import { EffectCards } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import * as classNames from 'classnames'
 import { DiscoverSideMenus } from '../DiscoverSideMenus'
 import { Card } from './Card.tsx'
-import { useDebounce } from '../../hooks/useDebounce'
 import { QueryKey } from '../../constants/QueryKey'
 import { useAPI } from '../../hooks/useAPI.ts'
 
+import 'swiper/css'
+import 'swiper/css/effect-cards'
+import { GetFeedsResponse } from '../../api/Feed.interface.ts'
+
 const pageSize = 20
+
+const PackedSwiper: FC<{
+  feedItems?: {
+    pages: GetFeedsResponse[]
+  }
+}> = ({ feedItems }) => {
+  const [isMoving, setIsMoving] = useState(false)
+  return (
+    <Swiper
+      effect="cards"
+      grabCursor
+      modules={[EffectCards]}
+      speed={500}
+      onSliderMove={() => setIsMoving(true)}
+      onSlideNextTransitionStart={() => setIsMoving(true)}
+      onSlidePrevTransitionStart={() => setIsMoving(true)}
+      onSlideNextTransitionEnd={() => setIsMoving(false)}
+      onSlidePrevTransitionEnd={() => setIsMoving(false)}
+      onTouchEnd={() => setIsMoving(false)}
+    >
+      {feedItems?.pages?.map((page) => (
+        <Fragment key={page.page}>
+          {page.data.map((item) => (
+            <SwiperSlide
+              key={item.id}
+              className={classNames('swiper-slide', {
+                moving: isMoving,
+              })}
+            >
+              <Card data={item} />
+            </SwiperSlide>
+          ))}
+        </Fragment>
+      ))}
+    </Swiper>
+  )
+}
 
 export const DiscoverFeed: FC<BoxProps> = ({ ...props }) => {
   const api = useAPI()
   const {
     data: feedItems,
-    fetchNextPage,
-    isFetchingNextPage,
-    hasNextPage,
+    // fetchNextPage,
+    // isFetchingNextPage,
+    // hasNextPage,
   } = useInfiniteQuery({
     queryKey: [QueryKey.GetFeeds],
     queryFn({ pageParam = 1 }) {
@@ -28,71 +71,34 @@ export const DiscoverFeed: FC<BoxProps> = ({ ...props }) => {
     },
   })
 
-  const feedItemTotal = useMemo(
-    () =>
-      // eslint-disable-next-line no-unsafe-optional-chaining
-      feedItems?.pages.reduce((acc, cur) => acc + cur?.data?.length || 0, 0) ||
-      pageSize,
-    [feedItems?.pages]
-  )
-
-  const onScroll = useDebounce<UIEventHandler<HTMLDivElement>>((e) => {
-    const container = e.target as HTMLDivElement
-    let index = [].slice
-      .call(container.children)
-      .findIndex(
-        (ele: HTMLDivElement) =>
-          Math.abs(
-            ele.getBoundingClientRect().left -
-              container.getBoundingClientRect().left
-          ) < 10
-      )
-    index = Math.max(index, 0)
-    if (
-      !isFetchingNextPage &&
-      hasNextPage &&
-      index >= feedItemTotal - pageSize / 2
-    ) {
-      fetchNextPage()
-    }
-  }, 100)
-
   return (
     <Box
       w="full"
       h="full"
       flex={1}
       pos="relative"
+      pt="20px"
       {...props}
       sx={{
-        '.slide': {
+        '.swiper': {
+          w: 'full',
+          h: 'full',
+        },
+        '.swiper-slide': {
+          bg: '#161616',
           w: 'min(100vw, 500px)',
           minW: 'min(100vw, 500px)',
           p: '5',
           overflowX: 'hidden',
+          rounded: '32px',
           overflowY: 'auto',
-          scrollSnapAlign: 'center',
+        },
+        '.swiper-slide.moving': {
+          overflowY: 'hidden',
         },
       }}
     >
-      <Flex
-        w="full"
-        h="full"
-        overflowX="auto"
-        overflowY="hidden"
-        scrollSnapType="x mandatory"
-        onScroll={onScroll}
-      >
-        {feedItems?.pages?.map((page) => (
-          <Fragment key={page.page}>
-            {page.data.map((item) => (
-              <Box className="slide" key={item.id}>
-                <Card data={item} />
-              </Box>
-            ))}
-          </Fragment>
-        ))}
-      </Flex>
+      <PackedSwiper feedItems={feedItems} />
       <DiscoverSideMenus />
     </Box>
   )

@@ -9,6 +9,7 @@ import {
   Tag,
   Text,
   VStack,
+  FlexProps,
 } from '@chakra-ui/react'
 import dayjs from 'dayjs'
 import {
@@ -35,14 +36,14 @@ const socialIconMap: Record<string, any> = {
   mirror: MirrorSVG,
 }
 
-interface CardProps {
+interface CardProps extends FlexProps {
   data: FeedItem
 }
 
-export const Card: FC<CardProps> = ({ data }) => {
+export const Card: FC<CardProps> = ({ data, ...props }) => {
   const avatar = (data as FeedUserItem).avatar || (data as FeedProjectItem).logo
   return (
-    <Flex w="full" h="auto" direction="column" pb="84px">
+    <Flex w="full" h="auto" direction="column" pb="84px" {...props}>
       <Flex
         w="full"
         h="120px"
@@ -74,7 +75,7 @@ export const Card: FC<CardProps> = ({ data }) => {
         pos="relative"
         bg="gray.800"
         zIndex={1}
-        transform="translate3d(0, 0, 0)"
+        transform="translateZ(0)"
       />
       {(data as FeedProjectItem).title ? (
         <Heading
@@ -149,6 +150,7 @@ export const Card: FC<CardProps> = ({ data }) => {
                   key={socialLink.type + socialLink.url}
                   as="a"
                   href={socialLink.url}
+                  target="_blank"
                   w="6"
                   h="6"
                   minW="6"
