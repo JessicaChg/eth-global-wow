@@ -36,8 +36,6 @@ export interface SocialLink {
 
 export interface FeedBaseItem {
   id: string
-  prev: string | null
-  next: string | null
   address: Address
   tags: string[]
   type: FeedItemType
@@ -62,3 +60,10 @@ export interface FeedUserItem extends FeedBaseItem {
 }
 
 export type FeedItem = FeedProjectItem | FeedUserItem
+
+export interface GetFeedsResponse {
+  data: FeedItem[]
+  total: number
+  page: number
+  nextPage: number | null
+}

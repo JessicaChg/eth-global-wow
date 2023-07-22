@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { router } from './router'
 
 import './styles/index.css'
+import '@fontsource-variable/space-grotesk'
 
 const queryClient = new QueryClient()
 
@@ -19,8 +20,13 @@ const theme = extendTheme({
     global: {
       body: {
         bg: '#161616',
+        fontFamily: "'Space Grotesk Variable', sans-serif;",
       },
     },
+  },
+  fonts: {
+    heading: "'Space Grotesk Variable', sans-serif;",
+    body: "'Space Grotesk Variable', sans-serif;",
   },
 })
 

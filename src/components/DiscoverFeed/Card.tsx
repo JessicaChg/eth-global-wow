@@ -1,63 +1,38 @@
 import { FC } from 'react'
 import {
   Box,
-  Center,
   Flex,
   Image,
-  Spinner,
   Heading,
   Icon,
   Tag,
   Text,
   VStack,
 } from '@chakra-ui/react'
-import { useQuery } from 'react-query'
 import * as dayjs from 'dayjs'
-import { QueryKey } from '../../constants/QueryKey'
-import { useAPI } from '../../hooks/useAPI'
 import { truncateMiddle } from '../../utils/string'
 import { FeedItem, FeedItemType } from '../../api/Feed.interface'
 import { ReactComponent as CopySVG } from '../../assets/svg/copy-with-theme-color.svg'
 
 interface CardProps {
-  id?: string
-  onLoadData?: (id: FeedItem) => void
-  isEnabled?: boolean
+  data: FeedItem
 }
 
-export const Card: FC<CardProps> = ({ id, isEnabled = true, onLoadData }) => {
-  const api = useAPI()
-  const { data, isLoading } = useQuery(
-    [api, QueryKey.GetFeedItem, id],
-    () => api.getFeedItem({ id }).then((res) => res.data),
-    {
-      onSuccess: (res) => {
-        onLoadData?.(res)
-        return res
-      },
-      enabled: isEnabled,
-    }
-  )
-
-  if (isLoading || !isEnabled) {
-    return (
-      <Center w="full" h="full">
-        <Spinner />
-      </Center>
-    )
-  }
-
-  if (!data) {
-    return <>No Data</>
-  }
-
+export const Card: FC<CardProps> = ({ data }) => {
   if (data.type === FeedItemType.User) {
     return <>No Data</>
   }
 
   return (
     <Flex w="full" h="auto" direction="column" pb="84px">
-      <Flex w="full" h="120px" rounded="16px" overflow="hidden">
+      <Flex
+        w="full"
+        h="120px"
+        rounded="16px"
+        overflow="hidden"
+        pos="relative"
+        zIndex={0}
+      >
         <Image
           src={data.logo}
           w="full"
@@ -128,7 +103,7 @@ export const Card: FC<CardProps> = ({ id, isEnabled = true, onLoadData }) => {
         ))}
       </Flex>
       <Flex mt={5} w="full">
-        <Text fontWeight={300} fontSize="14px">
+        <Text fontWeight={300} fontSize="14px" whiteSpace="pre-line">
           {data.content || 'No Description'}
         </Text>
       </Flex>

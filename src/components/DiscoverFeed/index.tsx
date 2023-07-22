@@ -1,16 +1,39 @@
-import { FC, UIEventHandler } from 'react'
+import { FC, Fragment, UIEventHandler, useMemo } from 'react'
 import { Box, Flex } from '@chakra-ui/react'
-import { atom, useAtom } from 'jotai'
+import { useInfiniteQuery } from 'react-query'
 import { DiscoverSideMenus } from '../DiscoverSideMenus'
 import { Card } from './Card.tsx'
-import { useDebounce } from '../../hooks/useDebounce.ts'
+import { useDebounce } from '../../hooks/useDebounce'
+import { QueryKey } from '../../constants/QueryKey'
+import { useAPI } from '../../hooks/useAPI.ts'
 
-const feedItemIdsAtom = atom<string[]>([])
-const activeIndexAtom = atom(0)
+const pageSize = 20
 
 export const DiscoverFeed: FC = () => {
-  const [feedItemIds, setFeedItemIds] = useAtom(feedItemIdsAtom)
-  const [activeIndex, setActiveIndex] = useAtom(activeIndexAtom)
+  const api = useAPI()
+  const {
+    data: feedItems,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
+    queryKey: [QueryKey.GetFeeds],
+    queryFn({ pageParam = 1 }) {
+      return api
+        .getFeedList({ page: pageParam, size: pageSize })
+        .then((res) => res.data)
+    },
+    getNextPageParam(lastPage) {
+      return lastPage.nextPage
+    },
+  })
+
+  const feedItemTotal = useMemo(
+    () =>
+      feedItems?.pages.reduce((acc, cur) => acc + cur.data.length, 0) ||
+      pageSize,
+    [feedItems?.pages]
+  )
+
   const onScroll = useDebounce<UIEventHandler<HTMLDivElement>>((e) => {
     const container = e.target as HTMLDivElement
     let index = [].slice
@@ -23,7 +46,9 @@ export const DiscoverFeed: FC = () => {
           ) < 10
       )
     index = Math.max(index, 0)
-    setActiveIndex(index)
+    if (!isFetchingNextPage && index >= feedItemTotal - pageSize / 2) {
+      fetchNextPage()
+    }
   }, 100)
 
   return (
@@ -50,30 +75,14 @@ export const DiscoverFeed: FC = () => {
         scrollSnapType="x mandatory"
         onScroll={onScroll}
       >
-        <Box className="slide">
-          <Card
-            onLoadData={(data) => {
-              if (!data.next) return
-              if (feedItemIds.length > 0) return
-              setFeedItemIds((ids) => [...ids, data.next!])
-            }}
-          />
-        </Box>
-        {feedItemIds.map((id, index) => (
-          <Box className="slide" key={id}>
-            <Card
-              id={id}
-              isEnabled={index < activeIndex + 1}
-              onLoadData={(data) => {
-                if (!data.next) return
-                setFeedItemIds((ids) => {
-                  const newIds = ids.concat([])
-                  newIds[index + 1] = data.next!
-                  return newIds
-                })
-              }}
-            />
-          </Box>
+        {feedItems?.pages?.map((page) => (
+          <Fragment key={page.page}>
+            {page.data.map((item) => (
+              <Box className="slide" key={item.id}>
+                <Card data={item} />
+              </Box>
+            ))}
+          </Fragment>
         ))}
       </Flex>
       <DiscoverSideMenus />

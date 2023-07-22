@@ -1,5 +1,5 @@
 import axios, { type AxiosInstance } from 'axios'
-import { FeedItem } from './Feed.interface.ts'
+import { FeedItem, GetFeedsResponse } from './Feed.interface.ts'
 import { IS_MOCK_API } from '../constants/env.ts'
 
 export class API {
@@ -19,6 +19,17 @@ export class API {
     return this.axios.get<FeedItem>('/api/feed/item', {
       params: {
         id: options?.id,
+      },
+    })
+  }
+
+  getFeedList(options?: { page?: number; size?: number }) {
+    const page = options?.page || 1
+    const size = options?.size || 20
+    return this.axios.get<GetFeedsResponse>('/api/feeds', {
+      params: {
+        page,
+        size,
       },
     })
   }
