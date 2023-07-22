@@ -1,7 +1,8 @@
 import { FC } from 'react'
-import { Flex, Image } from '@chakra-ui/react'
+import { Flex, Icon, Image } from '@chakra-ui/react'
 import { BottomNavigationBar } from '../components/BottomNavigationBar'
 import BackgroundImage from '../assets/png/background.jpeg'
+import { ReactComponent as GalaxySVG } from '../assets/svg/galaxy.svg'
 
 const Root: FC = () => (
   <Flex w="full" h="full" pos="relative">
@@ -13,6 +14,16 @@ const Root: FC = () => (
       w="full"
       h="full"
       objectFit="cover"
+      zIndex={0}
+    />
+    <Icon
+      w="full"
+      h="auto"
+      as={GalaxySVG}
+      pos="absolute"
+      zIndex={1}
+      top="15%"
+      left="0"
     />
     <BottomNavigationBar />
   </Flex>

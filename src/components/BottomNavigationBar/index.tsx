@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Box, BoxProps, Flex, HStack, Icon } from '@chakra-ui/react'
+import { Box, BoxProps, Flex, HStack, Icon, Center } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { Path } from '../../router/path.ts'
 import { ReactComponent as DiscoverSVG } from '../../assets/svg/discover.svg'
@@ -20,24 +20,31 @@ const Item: FC<{ to: string; name: string } & BoxProps> = ({
 )
 
 export const BottomNavigationBar: FC = () => (
-  <HStack
+  <Center
+    bg="linear-gradient(90deg, #EE609C 0%, #5157FF 100%)"
     pos="absolute"
     bottom="48px"
     left="50%"
     transform="translateX(-50%)"
-    spacing="24px"
-    py="2"
-    px="8"
-    border="1px solid #FF3389"
     rounded="full"
-    zIndex={2}
-    bg="#161616"
+    p="1px"
   >
-    <Item name="Discover" to={Path.Discover} color="#EE609C">
-      <Icon w="32px" h="32px" as={DiscoverSVG} />
-    </Item>
-    <Item name="Me" to={Path.Me}>
-      <Icon w="32px" h="32px" as={MeSVG} />
-    </Item>
-  </HStack>
+    <HStack
+      w="full"
+      h="full"
+      rounded="full"
+      py="2"
+      px="8"
+      spacing="24px"
+      zIndex={2}
+      bg="#161616"
+    >
+      <Item name="Discover" to={Path.Discover} color="#EE609C">
+        <Icon w="32px" h="32px" as={DiscoverSVG} />
+      </Item>
+      <Item name="Me" to={Path.Me}>
+        <Icon w="32px" h="32px" as={MeSVG} />
+      </Item>
+    </HStack>
+  </Center>
 )
