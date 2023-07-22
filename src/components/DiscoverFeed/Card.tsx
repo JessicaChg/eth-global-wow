@@ -238,6 +238,73 @@ export const Card: FC<CardProps> = ({ data, ...props }) => {
         </Text>
       ) : null}
 
+      {(data as FeedProjectItem).relevantContent?.length > 0 ? (
+        <Flex mt={8} direction="column">
+          <Heading
+            fontSize="14px"
+            fontWeight={700}
+            pos="relative"
+            pb="6px"
+            mr="auto"
+            _after={{
+              content: '" "',
+              bg: '#F9D54A',
+              pos: 'absolute',
+              bottom: '0',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              w: '32px',
+              h: '2px',
+              rounded: 'full',
+            }}
+          >
+            {data.type === FeedItemType.Project
+              ? 'Community Discussion'
+              : 'Feed'}
+          </Heading>
+          <VStack mt="16px" spacing="10" w="full">
+            {(data as FeedProjectItem).relevantContent.map((item) => (
+              <Flex
+                direction="column"
+                w="full"
+                key={`${item.createTime}-${item.name}`}
+              >
+                {item.name && item.twitterName ? (
+                  <Flex w="full" mb="14px">
+                    {data.type === FeedItemType.Project ? (
+                      <Image
+                        src={item.avatar}
+                        w="36px"
+                        h="36px"
+                        objectFit="cover"
+                        mr="10px"
+                        rounded="8px"
+                      />
+                    ) : null}
+                    {item.name && item.twitterName ? (
+                      <Flex direction="column" h="36px">
+                        {item.name ? (
+                          <Box fontSize="14px">{item.name}</Box>
+                        ) : null}
+                        {item.twitterName ? (
+                          <Box color="#8C91A2" fontSize="12px">
+                            {item.twitterName} -{' '}
+                            {dayjs(item.createTime).format('MMM DD')}
+                          </Box>
+                        ) : null}
+                      </Flex>
+                    ) : null}
+                  </Flex>
+                ) : null}
+                <Text fontSize="12px" fontWeight={400}>
+                  {item.content}
+                </Text>
+              </Flex>
+            ))}
+          </VStack>
+        </Flex>
+      ) : null}
+
       {(data as FeedUserItem).erc20?.length > 0 ? (
         <Flex
           mt={6}
@@ -368,72 +435,6 @@ export const Card: FC<CardProps> = ({ data, ...props }) => {
               </Flex>
             ))}
           </Flex>
-        </Flex>
-      ) : null}
-
-      {(data as FeedProjectItem).relevantContent?.length > 0 ? (
-        <Flex mt={8} direction="column">
-          <Heading
-            fontSize="14px"
-            fontWeight={700}
-            pos="relative"
-            pb="6px"
-            mr="auto"
-            _after={{
-              content: '" "',
-              bg: '#F9D54A',
-              pos: 'absolute',
-              bottom: '0',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              w: '32px',
-              h: '2px',
-              rounded: 'full',
-            }}
-          >
-            {data.type === FeedItemType.Project
-              ? 'Community Discussion'
-              : 'Feed'}
-          </Heading>
-          <VStack mt="16px" spacing="10" w="full">
-            {(data as FeedProjectItem).relevantContent.map((item) => (
-              <Flex
-                direction="column"
-                w="full"
-                key={`${item.createTime}-${item.name}`}
-              >
-                {item.name && item.twitterName ? (
-                  <Flex w="full" mb="14px">
-                    {data.type === FeedItemType.Project ? (
-                      <Image
-                        src={item.avatar}
-                        w="36px"
-                        h="36px"
-                        objectFit="cover"
-                        mr="10px"
-                      />
-                    ) : null}
-                    {item.name && item.twitterName ? (
-                      <Flex direction="column" h="36px">
-                        {item.name ? (
-                          <Box fontSize="14px">{item.name}</Box>
-                        ) : null}
-                        {item.twitterName ? (
-                          <Box color="#8C91A2" fontSize="12px">
-                            {item.twitterName} -{' '}
-                            {dayjs(item.createTime).format('MMM DD')}
-                          </Box>
-                        ) : null}
-                      </Flex>
-                    ) : null}
-                  </Flex>
-                ) : null}
-                <Text fontSize="12px" fontWeight={400}>
-                  {item.content}
-                </Text>
-              </Flex>
-            ))}
-          </VStack>
         </Flex>
       ) : null}
     </Flex>

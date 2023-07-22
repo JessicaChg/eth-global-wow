@@ -27,7 +27,7 @@
         "name": "Zenith Zephyr",
         "twitterName": "@ZenithZephyr",
         "isVerified": true,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar20.png",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/e45ee9e65d724f0ba57e30d1d18d2051.png",
         "createTime": "2023-07-23",
         "content": "Arkham intelligence is a ‘’next-gen company intelligence platform’’. It sounds like something owned by the real life Batman, and much like your average vigilante-hero of the people, Arkham has recently come under fire for its controversial practices."
       },
@@ -35,9 +35,9 @@
         "name": "Nova Nexus",
         "twitterName": "@NovaNexus",
         "isVerified": true,
-        "avatar": "https://pbs.twimg.com/profile_banners/33962758/1443792478/1500x500",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/d6fb703d64b54feb82e2327486e6193a.jpg",
         "createTime": "2023-07-21",
-        "content": "Arkham officially announced that the ARKM airdrop has been snapshotted on July 8 and will be open for application on July 18. Users can enter an Ethereum address through the Arkham platform invitation dashboard to claim the airdrop."
+        "content": "Web3, also known as the decentralized web, represents the next generation of the internet. It is driven by blockchain technology and aims to revolutionize various industries by providing enhanced privacy, security, and user control. "
       }
     ],
     "socialLinks": [
@@ -93,7 +93,7 @@
         "name": "Starlight Studios",
         "twitterName": "@StarlightStudios",
         "isVerified": true,
-        "avatar": "https://twitter.com/tommedema/photo",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/e40b0aa954934d55962ee2768efd8bfb.jpg",
         "createTime": "2023-07-20",
         "content": "Pepecoin (PEPE) emerged as a notable player in the meme coin sector, an integral facet of the current cryptocurrency culture. In April, PEPE made waves by reaching exceptional heights, gaining a market cap of nearly $2 billion within a few weeks, and spawning a host of instant millionaires."
       },
@@ -101,7 +101,7 @@
         "name": "DreamCatcher Designs",
         "twitterName": "@DreamCatcherDesigns",
         "isVerified": true,
-        "avatar": "https://pbs.twimg.com/profile_banners/33962758/1443792478/1500x500",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/ce707381d76e47fda4f10fd2889bff29.JPG",
         "createTime": "2023-07-21",
         "content": "Join Pepe in Web3 and discover the real fun!"
       }
@@ -163,18 +163,6 @@
         "icon": "https://etherscan.io/token/images/centre-usdc_28.png",
         "usdValue": "175.22",
         "amount": 175.22
-      },
-      {
-        "symbol": "ETH",
-        "icon": "https://www.0xscope.com/images/tokenImage/0x0000000000000000000000000000000000000000/logo.png",
-        "usdValue": "2007.55",
-        "amount": 1.23
-      },
-      {
-        "symbol": "BTC",
-        "icon": "https://etherscan.io/token/images/centre-usdc_28.png",
-        "usdValue": "123.21",
-        "amount": 0.006
       }
     ],
     "nft": [
@@ -236,19 +224,27 @@
     "followerCount": 200,
     "relevantContent": [
       {
-        "name": "Nenith",
-        "twitterName": "@Nenith",
+        "name": "vitalik.eth",
+        "twitterName": "@VitalikButerin",
         "isVerified": true,
         "avatar": "https://app.relationlabs.ai/icon/avatar/avatar18.png",
         "createTime": "2023-07-23",
+        "content": "Deeper dive on L2->L1 and cross-L2 reading. Much more technical than  the previous post, but gets into some ideas on how it could be  implemented.\n\nThere's a lot of value in identifying better strategies for L1 <-> L2 interactions and standardizing them."
+      },
+      {
+        "name": null,
+        "twitterName": null,
+        "isVerified": true,
+        "avatar": null,
+        "createTime": null,
         "content": "Purchased 0.30 million BLUR ($0.62M) on May 28th"
       },
       {
-        "name": "Nova Nexus",
-        "twitterName": "@NovaNexus",
+        "name": null,
+        "twitterName": null,
         "isVerified": true,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar22.png",
-        "createTime": "2023-07-21",
+        "avatar": null,
+        "createTime": null,
         "content": "Purchased 1.75 million BLUR ($0.58M) on March 21th"
       }
     ]
@@ -277,7 +273,7 @@
         "name": "Scan Bounty Hunter",
         "twitterName": "@Scanbounty",
         "isVerified": true,
-        "avatar": "https://pbs.twimg.com/profile_banners/33962758/1443792478/1500x500",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/69f7149e34b141e7897adb0b6e44fb79.jpg",
         "createTime": "2023-07-21",
         "content": "The project attracted massive attention after being endorsed by Vitalik Buterin. "
       },
@@ -285,7 +281,7 @@
         "name": "Luminary Innovations",
         "twitterName": "@LuminaryInnovations",
         "isVerified": true,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar19.png",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/31821ad2ef4249ffb5c84f2f73569c64.JPG",
         "createTime": "2023-07-23",
         "content": "Our vision is to be the largest buyer of lottery tickets in the world and distribute its winnings to the broadest set of global citizens."
       },
@@ -293,9 +289,9 @@
         "name": "The Blockchain club",
         "twitterName": "@unichainmedia",
         "isVerified": false,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar15.png",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/a382aa77c09742439b7064cbec5c8589.jpg",
         "createTime": "2023-07-20",
-        "content": "The project attracted massive attention after being endorsed by Vitalik Buterin. "
+        "content": "Unlike Web 2.0, which relied on centralized platforms and intermediaries, Web3 empowers individuals and promotes peer-to-peer interactions."
       }
     ],
     "socialLinks": [
@@ -349,7 +345,7 @@
         "name": "Evergreen Solutions",
         "twitterName": "@EvergreenSolutions",
         "isVerified": true,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar13.png",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/da06a98c10b64670a8d43f48a6932524.jpg",
         "createTime": "2023-07-23",
         "content": "BitDAO price live updates on The Economic Times. Check out why BitDAO price is up (21 Jul 2023) today. Get detailed BitDAO cryptocurrency price news"
       },
@@ -357,7 +353,7 @@
         "name": "Scan Bounty Hunter",
         "twitterName": "@Scanbounty",
         "isVerified": true,
-        "avatar": "https://pbs.twimg.com/profile_banners/33962758/1443792478/1500x500",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/5339fe308fe746f2bd9212326a7ca695.JPG",
         "createTime": "2023-07-21",
         "content": "The project attracted massive attention after being endorsed by Vitalik Buterin. "
       },
@@ -365,9 +361,9 @@
         "name": "The Blockchain club",
         "twitterName": "@unichainmedia",
         "isVerified": false,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar21.png",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/479d8c4caff84b1a88283f5d2c67943d.jpg",
         "createTime": "2023-07-20",
-        "content": "The project attracted massive attention after being endorsed by Vitalik Buterin. "
+        "content": "One of the defining features of Web3 is its emphasis on decentralization. "
       }
     ],
     "socialLinks": [
@@ -417,12 +413,6 @@
         "amount": 42330
       },
       {
-        "symbol": "ETH",
-        "icon": "https://static.oklink.com/cdn/assets/imgs/234/394F7F0E5AA398F0.png",
-        "usdValue": "2007.55",
-        "amount": 1.23
-      },
-      {
         "symbol": "USDT",
         "icon": "https://etherscan.io/token/images/tethernew_32.png",
         "usdValue": "156.00",
@@ -433,12 +423,6 @@
         "icon": "https://etherscan.io/token/images/centre-usdc_28.png",
         "usdValue": "175.22",
         "amount": 175.22
-      },
-      {
-        "symbol": "BTC",
-        "icon": "https://static.oklink.com/cdn/assets/imgs/MjAxOTc/1254C5731DCE6B41F928F1FC529E8505.jpg",
-        "usdValue": "123.21",
-        "amount": 0.006
       }
     ],
     "nft": [
@@ -499,21 +483,21 @@
     ],
     "followerCount": 200,
     "relevantContent": [
+  {
+    "name": "Nova Nexus",
+    "twitterName": "@NovaNexus",
+    "isVerified": true,
+    "avatar": "https://twitter.com/KakarotZkEvm/photo",
+    "createTime": "2023-07-21",
+    "content": "\uD83C\uDFDB️Beautiful Palace \nHappy hacking \n@ETHGlobal\n Paris✨"
+  },
       {
-        "name": "Aenith",
-        "twitterName": "@Aenith",
-        "isVerified": true,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar23.png",
-        "createTime": "2023-07-23",
+        "name": null,
+        "twitterName": null,
+        "isVerified": null,
+        "avatar": null,
+        "createTime": null,
         "content": "Purchased 0.30 million ETH ($125.49M) on May 3th"
-      },
-      {
-        "name": "Nova Nexus",
-        "twitterName": "@NovaNexus",
-        "isVerified": true,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar24.png",
-        "createTime": "2023-07-21",
-        "content": "Purchased 0.072 million BLUR ($0.55M) on May 28th"
       }
     ]
 
@@ -545,7 +529,7 @@
         "name": "Zenith Zephyr",
         "twitterName": "@ZenithZephyr",
         "isVerified": true,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar20.png",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/66a9d189b2154ee4801cf982e796309b.JPG",
         "createTime": "2023-07-23",
         "content": "As a digital currency, Worldcoin will function differently to market leaders bitcoin or ethereum by offering people a token of the future currency without requiring that they invest any funds."
       },
@@ -553,7 +537,7 @@
         "name": "Scan Bounty Hunter",
         "twitterName": "@Scanbounty",
         "isVerified": true,
-        "avatar": "https://pbs.twimg.com/profile_banners/33962758/1443792478/1500x500",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/696685ef82dd478997fc9af7afeb92d6.JPG",
         "createTime": "2023-07-21",
         "content": "The simplest way to use World ID is as a sign in method. Upon selecting Sign in with Worldcoin on a website, mobile app or crypto dapp, you approve or reject the request from your self-custodial wallet to authenticate and prove you’re a real and unique person."
       },
@@ -561,9 +545,9 @@
         "name": "The Blockchain club",
         "twitterName": "@unichainmedia",
         "isVerified": false,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar21.png",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/ff03c4f9767b424aa9c7169f17f62e99.JPG",
         "createTime": "2023-07-20",
-        "content": "The project attracted massive attention after being endorsed by Vitalik Buterin. "
+        "content": "Through blockchain technology, data and transactions are distributed across a network of nodes, eliminating the need for single points of failure or trusted authorities. "
       }
     ],
     "socialLinks": [
@@ -617,7 +601,7 @@
         "name": "Ava Taylor",
         "twitterName": "@AvaTaylor",
         "isVerified": true,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar20.png",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/ff03c4f9767b424aa9c7169f17f62e99.JPG",
         "createTime": "2023-07-23",
         "content": "WalletConnect is a protocol used by many crypto wallets that allows you to easily connect with the many DApps of decentralized finance (DeFi)."
       },
@@ -625,7 +609,7 @@
         "name": "Scan Bounty Hunter",
         "twitterName": "@Scanbounty",
         "isVerified": true,
-        "avatar": "https://pbs.twimg.com/profile_banners/33962758/1443792478/1500x500",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/51859327f0e84defaff674f0a892928d.jpg",
         "createTime": "2023-07-21",
         "content": "WalletConnect is the protocol that allows users to connect their mobile wallets to your dApp, and it's an important foundation of RainbowKit. "
       },
@@ -633,9 +617,9 @@
         "name": "The Blockchain club",
         "twitterName": "@unichainmedia",
         "isVerified": false,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar21.png",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/4bfd962448144df785789baf1781a50f.gif",
         "createTime": "2023-07-20",
-        "content": "The project attracted massive attention after being endorsed by Vitalik Buterin. "
+        "content": "This distributed nature enhances transparency, censorship resistance, and resilience in the face of attacks or disruptions."
       }
     ],
     "socialLinks": [
@@ -685,18 +669,6 @@
         "icon": "https://etherscan.io/token/images/relationlabs_32.png",
         "usdValue": "577.32",
         "amount": 32330
-      },
-      {
-        "symbol": "ETH",
-        "icon": "https://static.oklink.com/cdn/assets/imgs/234/394F7F0E5AA398F0.png",
-        "usdValue": "2007.55",
-        "amount": 1.23
-      },
-      {
-        "symbol": "BTC",
-        "icon": "https://static.oklink.com/cdn/assets/imgs/MjAxOTc/1254C5731DCE6B41F928F1FC529E8505.jpg",
-        "usdValue": "123.21",
-        "amount": 0.006
       },
       {
         "symbol": "USDT",
@@ -770,19 +742,19 @@
     "followerCount": 200,
     "relevantContent": [
       {
-        "name": "Genith",
-        "twitterName": "@Genith",
+        "name": "Jessica Chang",
+        "twitterName": "@Jessica_Chang10",
         "isVerified": true,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar16.png",
+        "avatar": "https://twitter.com/Jessica_Chang10/photo",
         "createTime": "2023-07-23",
-        "content": "Purchased 1.072 million BLUR ($1.55M) on May 28th"
+        "content": "7 Takeaways of \n@EthCC\n Paris \uD83C\uDDEB\uD83C\uDDF7\nWhile the ETHGlobal Paris is still ongoing, I am sharing some views on the largest European Ethereum Gathering this year."
       },
       {
-        "name": "Nova Nexus",
-        "twitterName": "@NovaNexus",
-        "isVerified": true,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar27.png",
-        "createTime": "2023-07-21",
+        "name": null,
+        "twitterName": null,
+        "isVerified": null,
+        "avatar": null,
+        "createTime": null,
         "content": "Purchased 0.22 million BLUR ($0.35M) on May 28th"
       }
     ]
@@ -810,7 +782,7 @@
         "name": "Liam Martin",
         "twitterName": "@LiamMartin",
         "isVerified": true,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar20.png",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/060c44151d944c62b23e15e13a56af88.JPG",
         "createTime": "2023-07-23",
         "content": "The next 1B web3 users won't secure their assets with 12 words.\n\nAccount Abstraction, Multi-Party Compute, hardware wallets (and more!) could all replace the existing account model."
       },
@@ -818,17 +790,17 @@
         "name": "Scan Bounty Hunter",
         "twitterName": "@Scanbounty",
         "isVerified": true,
-        "avatar": "https://pbs.twimg.com/profile_banners/33962758/1443792478/1500x500",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/54c582ef8f2e42c4bb5f351767d1fb0b.png",
         "createTime": "2023-07-21",
-        "content": "The project attracted massive attention after being endorsed by Vitalik Buterin. "
+        "content": "Through self-sovereign identity systems and decentralized storage solutions, individuals can securely manage their personal information and decide how it is shared with third parties. "
       },
       {
         "name": "The Blockchain club",
         "twitterName": "@unichainmedia",
         "isVerified": false,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar21.png",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/8f384bf4829442a8b4797ff04cf6915d.JPG",
         "createTime": "2023-07-20",
-        "content": "The project attracted massive attention after being endorsed by Vitalik Buterin. "
+        "content": "Moreover, Web3 enables users to have sovereign control over their digital identities and data. "
       }
     ],
     "socialLinks": [
@@ -882,7 +854,7 @@
         "name": "Noah Wilson",
         "twitterName": "@NoahWilson",
         "isVerified": true,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar20.png",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/22c2e7629552449fbdcf9c42e5cf750d.jpg",
         "createTime": "2023-07-23",
         "content": "Nouns DAO utilizes a fork of Compound Governance and is the main governing body of the Nouns ecosystem. The Nouns DAO treasury receives 100% of ETH proceeds from daily noun auctions."
       },
@@ -890,17 +862,17 @@
         "name": "Scan Bounty Hunter",
         "twitterName": "@Scanbounty",
         "isVerified": true,
-        "avatar": "https://pbs.twimg.com/profile_banners/33962758/1443792478/1500x500",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/bdfe79347d874080b7a662ee7ed55318.JPG",
         "createTime": "2023-07-21",
-        "content": "The project attracted massive attention after being endorsed by Vitalik Buterin. "
+        "content": "This puts users back in the driver's seat, ensuring their privacy and protecting them from data breaches or misuse."
       },
       {
         "name": "The Blockchain club",
         "twitterName": "@unichainmedia",
         "isVerified": false,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar21.png",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/e48b80d14d10499e9a946bb5590e06fb.png",
         "createTime": "2023-07-20",
-        "content": "The project attracted massive attention after being endorsed by Vitalik Buterin. "
+        "content": "In the context of Web3, smart contracts play a crucial role. These self-executing contracts, powered by blockchain technology, enable automated and trustless interactions between participants."
       }
     ],
     "socialLinks": [
@@ -960,7 +932,7 @@
         "name": "Ethan Davis",
         "twitterName": "@EthanDavis",
         "isVerified": true,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar20.png",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/032f5dcef5a14768a0d860382e9210bd.JPG",
         "createTime": "2023-07-23",
         "content": "he price of HarryPotterObamaSonic10Inu (BSC) has risen by 125.79% in the past 7 days. The price declined by 6.19% in the last 24 hours. "
       },
@@ -968,17 +940,17 @@
         "name": "Scan Bounty Hunter",
         "twitterName": "@Scanbounty",
         "isVerified": true,
-        "avatar": "https://pbs.twimg.com/profile_banners/33962758/1443792478/1500x500",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/62b5ec79c80c4b2d9f900ee0ae8a5f6c.JPG",
         "createTime": "2023-07-21",
-        "content": "The project attracted massive attention after being endorsed by Vitalik Buterin. "
+        "content": "Smart contracts eliminate the need for intermediaries in various processes, such as financial transactions, supply chain management, or intellectual property rights. This leads to greater efficiency, cost savings, and increased trust among participants."
       },
       {
         "name": "The Blockchain club",
         "twitterName": "@unichainmedia",
         "isVerified": false,
-        "avatar": "https://app.relationlabs.ai/icon/avatar/avatar21.png",
+        "avatar": "https://3fypb-gqaaa-aaaag-aaedq-cai.ic1.io/avatar/f0e2cc6471d7434f8de72399910ca6fd.png",
         "createTime": "2023-07-20",
-        "content": "The project attracted massive attention after being endorsed by Vitalik Buterin. "
+        "content": "Web3 also opens up possibilities for decentralized applications (DApps) and platforms. Built on blockchain networks, DApps offer numerous benefits such as improved transparency, immutability, and open access. "
       }
     ],
     "socialLinks": [
