@@ -11,20 +11,19 @@ import {
   VStack,
 } from '@chakra-ui/react'
 import * as dayjs from 'dayjs'
-import { truncateMiddle } from '../../utils/string'
 import {
   FeedItem,
   FeedItemType,
   FeedProjectItem,
   FeedUserItem,
 } from '../../api/Feed.interface'
-import { ReactComponent as CopySVG } from '../../assets/svg/copy-with-theme-color.svg'
 import { ReactComponent as Heart2SVG } from '../../assets/svg/heart-2.svg'
 import { ReactComponent as TwitterSVG } from '../../assets/svg/twitter.svg'
 import { ReactComponent as DiscordSVG } from '../../assets/svg/discord.svg'
 import { ReactComponent as GithubSVG } from '../../assets/svg/github.svg'
 import { ReactComponent as EnsSVG } from '../../assets/svg/ens.svg'
 import { ReactComponent as MirrorSVG } from '../../assets/svg/mirror.svg'
+import { AddressBar } from './AddressBar.tsx'
 
 const socialIconMap: Record<string, any> = {
   twitter: TwitterSVG,
@@ -40,7 +39,6 @@ interface CardProps {
 
 export const Card: FC<CardProps> = ({ data }) => {
   const avatar = (data as FeedUserItem).avatar || (data as FeedProjectItem).logo
-
   return (
     <Flex w="full" h="auto" direction="column" pb="84px">
       <Flex
@@ -88,22 +86,10 @@ export const Card: FC<CardProps> = ({ data }) => {
           {(data as FeedProjectItem).title}
         </Heading>
       ) : null}
-      <Box
-        fontSize="16px"
-        fontWeight={500}
-        lineHeight="150%"
-        border="1px solid"
-        borderColor="pink.500"
-        color="pink.500"
-        mx="auto"
-        py={2}
-        px={4}
+      <AddressBar
         mt={data.type === FeedItemType.User ? 5 : 2}
-        rounded="full"
-      >
-        {truncateMiddle(data.address)}
-        <Icon as={CopySVG} ml="5px" />
-      </Box>
+        address={data.address}
+      />
       <Flex wrap="wrap" w="full" mt="16px">
         {data.tags.map((tag) => (
           <Tag
