@@ -1,26 +1,30 @@
-import { FC, useEffect, useState } from 'react'
-import { Box } from '@chakra-ui/react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import type { Swiper as SwiperClass } from 'swiper/types'
+import { FC, UIEventHandler } from 'react'
+import { Box, Flex } from '@chakra-ui/react'
 import { atom, useAtom } from 'jotai'
 import { DiscoverSideMenus } from '../DiscoverSideMenus'
 import { Card } from './Card.tsx'
+import { useDebounce } from '../../hooks/useDebounce.ts'
 
 const feedItemIdsAtom = atom<string[]>([])
 const activeIndexAtom = atom(0)
 
 export const DiscoverFeed: FC = () => {
-  const [swiper, setSwiper] = useState<SwiperClass | null>(null)
   const [feedItemIds, setFeedItemIds] = useAtom(feedItemIdsAtom)
   const [activeIndex, setActiveIndex] = useAtom(activeIndexAtom)
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    if (swiper) {
-      swiper.slideTo(activeIndex, 0)
-      setMounted(true)
-    }
-  }, [swiper])
+  const onScroll = useDebounce<UIEventHandler<HTMLDivElement>>((e) => {
+    const container = e.target as HTMLDivElement
+    let index = [].slice
+      .call(container.children)
+      .findIndex(
+        (ele: HTMLDivElement) =>
+          Math.abs(
+            ele.getBoundingClientRect().left -
+              container.getBoundingClientRect().left
+          ) < 10
+      )
+    index = Math.max(index, 0)
+    setActiveIndex(index)
+  }, 100)
 
   return (
     <Box
@@ -28,27 +32,25 @@ export const DiscoverFeed: FC = () => {
       h="full"
       pos="relative"
       sx={{
-        '.swiper': {
-          height: '100%',
-          maxHeight: '100%',
-        },
-        '.swiper-slide': {
-          p: '4',
+        '.slide': {
+          w: 'min(100vw, 500px)',
+          minW: 'min(100vw, 500px)',
+          p: '5',
           overflowX: 'hidden',
           overflowY: 'auto',
+          scrollSnapAlign: 'center',
         },
       }}
     >
-      <Swiper
-        navigation
-        onActiveIndexChange={(s) => setActiveIndex(s.activeIndex)}
-        onSwiper={(s) => {
-          setSwiper(s)
-        }}
-        style={{ opacity: mounted ? undefined : 0 }}
-        onSlideChange={() => console.log('slide change')}
+      <Flex
+        w="full"
+        h="full"
+        overflowX="auto"
+        overflowY="hidden"
+        scrollSnapType="x mandatory"
+        onScroll={onScroll}
       >
-        <SwiperSlide>
+        <Box className="slide">
           <Card
             onLoadData={(data) => {
               if (!data.next) return
@@ -56,12 +58,12 @@ export const DiscoverFeed: FC = () => {
               setFeedItemIds((ids) => [...ids, data.next!])
             }}
           />
-        </SwiperSlide>
+        </Box>
         {feedItemIds.map((id, index) => (
-          <SwiperSlide key={id}>
+          <Box className="slide" key={id}>
             <Card
               id={id}
-              isEnabled={index === activeIndex || index === activeIndex + 1}
+              isEnabled={index < activeIndex + 1}
               onLoadData={(data) => {
                 if (!data.next) return
                 setFeedItemIds((ids) => {
@@ -71,9 +73,9 @@ export const DiscoverFeed: FC = () => {
                 })
               }}
             />
-          </SwiperSlide>
+          </Box>
         ))}
-      </Swiper>
+      </Flex>
       <DiscoverSideMenus />
     </Box>
   )

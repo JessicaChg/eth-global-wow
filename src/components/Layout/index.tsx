@@ -2,8 +2,7 @@ import { FC } from 'react'
 import { Flex, type FlexProps } from '@chakra-ui/react'
 import { Outlet } from 'react-router-dom'
 
-import { use100vhInCssVariable } from '../../hooks/use100vh.ts'
-import { BottomNavbar } from './BottomNavbar.tsx'
+import { use100vhInCssVariable } from '../../hooks/use100vh'
 
 export const Layout: FC<FlexProps> = ({ children, ...props }) => {
   use100vhInCssVariable()
@@ -27,7 +26,6 @@ export const Layout: FC<FlexProps> = ({ children, ...props }) => {
       >
         {children || <Outlet />}
       </Flex>
-      <BottomNavbar />
     </Flex>
   )
 }

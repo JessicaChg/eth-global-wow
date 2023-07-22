@@ -15,6 +15,13 @@ const theme = extendTheme({
     initialColorMode: 'dark',
     useSystemColorMode: false,
   },
+  styles: {
+    global: {
+      body: {
+        bg: '#161616',
+      },
+    },
+  },
 })
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
