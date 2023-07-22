@@ -4,7 +4,7 @@ import type { Address, FeedItem } from './Feed.interface.ts'
 import {
   FeedItemType,
   type FeedProjectItem,
-  // type FeedUserItem,
+  type FeedUserItem,
 } from './Feed.interface.ts'
 
 const data: FeedItem[] = new Array(100).fill(0).map<FeedItem>((_, i) => {
@@ -21,17 +21,109 @@ const data: FeedItem[] = new Array(100).fill(0).map<FeedItem>((_, i) => {
       'Defi',
     ],
   }
-  // if (i % 2 === 0) {
-  //   return {
-  //     ...base,
-  //     type: FeedItemType.User,
-  //     avatar: `https://r.nervina.cn/meta_santa.png?tid=${i}&locale=en`,
-  //     erc20: [],
-  //     nft: [],
-  //     socialLinks: [],
-  //     followerCount: 200,
-  //   } as FeedUserItem
-  // }
+  const img = `https://app.relationlabs.ai/icon/avatar/avatar${
+    (i % 10) + 10
+  }.png`
+  if (i % 2 === 1) {
+    return {
+      ...base,
+      type: FeedItemType.User,
+      avatar: img,
+      erc20: [
+        {
+          symbol: 'USDT',
+          icon: 'https://etherscan.io/token/images/tethernew_32.png',
+          usdValue: '156.00',
+          amount: 156,
+        },
+        {
+          symbol: 'REL',
+          icon: 'https://etherscan.io/token/images/relationlabs_32.png',
+          usdValue: '577.32',
+          amount: 32330,
+        },
+        {
+          symbol: 'USDC',
+          icon: 'https://etherscan.io/token/images/centre-usdc_28.png',
+          usdValue: '175.22',
+          amount: 175.22,
+        },
+        {
+          symbol: 'ETH',
+          icon: 'https://etherscan.io/assets/svg/logos/logo-etherscan.svg?v=0.0.5',
+          usdValue: '2007.55',
+          amount: 1.23,
+        },
+        {
+          symbol: 'BTC',
+          icon: 'https://etherscan.io/token/images/centre-usdc_28.png',
+          usdValue: '123.21',
+          amount: 0.006,
+        },
+      ],
+      nft: [
+        {
+          name: '.soul profile',
+          imageUrl:
+            'https://openseauserdata.com/files/3dd87aff966d96588e0e672c45dff5f1.svg',
+          tokenId: 1,
+          fullName: '.soul profile #1',
+          price: '3.1ETH',
+          like: 355,
+        },
+        {
+          name: 'CryptoKitties',
+          imageUrl:
+            'https://logo.nftscan.com/logo/0x06012c8cf97bead5deae237070f9587f8e7a266d.png',
+          tokenId: 135,
+          fullName: 'CryptoKitties #135',
+          price: '0.015ETH',
+          like: 289,
+        },
+        {
+          name: 'BoredApeYachtClub',
+          imageUrl:
+            'https://dm2zb8bwza29x.cloudfront.net/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/0x0000000000000000000000000000000000000000000000000000000000000000.png',
+          tokenId: 479,
+          fullName: 'BoredApeYachtClub #355',
+          price: '2.1ETH',
+          like: 75,
+        },
+        {
+          name: 'BoredApeYachtClub',
+          imageUrl:
+            'https://dm2zb8bwza29x.cloudfront.net/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/0x000000000000000000000000000000000000000000000000000000000000000a.png',
+          tokenId: 479,
+          fullName: 'BoredApeYachtClub #479',
+          price: '3.5ETH',
+          like: 63,
+        },
+      ],
+      socialLinks: [
+        {
+          type: 'twitter',
+          url: 'https://twitter.com/relationlabs',
+        },
+        {
+          type: 'telegram',
+          url: 'https://t.me/therelationlabs',
+        },
+        {
+          type: 'github',
+          url: 'https://github.com/relationlabs',
+        },
+        {
+          type: 'ens',
+          url: null,
+        },
+        {
+          type: 'discord',
+          url: 'https://discord.com/invite/whGB5zEsHY',
+        },
+      ],
+      followerCount: 200,
+    } as FeedUserItem
+  }
   return {
     ...base,
     type: FeedItemType.Project,
@@ -41,7 +133,7 @@ const data: FeedItem[] = new Array(100).fill(0).map<FeedItem>((_, i) => {
       'A common fix for this is to add listeners that execute a programmatic scroll via JavaScript to force snapping to execute whenever any of these mentioned layout changes happen. This workaround can be ineffective when the user expects the scroller to snap back to the same content as before. Any further handling with JavaScript seems to almost defeat the purpose of this CSS feature.\n' +
       '\n',
     title: `Relation X EthCC 2023 ${i}`,
-    logo: `https://app.relationlabs.ai/icon/avatar/avatar${(i % 10) + 10}.png`,
+    logo: img,
     relevantContent: [
       {
         name: 'Vatalik.eth',
